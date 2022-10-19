@@ -15,11 +15,12 @@ class MessageForm : public QWidget, public Message<msg_type>
 
 public:
     
-    MessageForm(QPoint position, QWidget* parent = nullptr );
+    MessageForm(QWidget* parent = nullptr );
     ~MessageForm();
 
-    QRect Rect(QLabel* Body_ptr);
-
+    QString SplitStrToFitIn(QString str);
+    qreal TextWidth(QString& str);
+    int TextHeight(QString& str);
     void ResizeForm();
     void Anchor();
     void writeMessageIntoForm(Message<msg_type> msg);

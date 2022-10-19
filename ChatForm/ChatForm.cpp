@@ -16,7 +16,7 @@ ChatForm::ChatForm(QWidget *parent)
     this->show();
     
     
-    MessagePosition = QPoint(10,10);
+    MessagePosition = QPoint(side_mergin,side_mergin);
     QObject::connect(ui->Send, &QPushButton::clicked, this, &ChatForm::writeMessage);
     QObject::connect(this, &ChatForm::incomingMessage, this, &ChatForm::readMessage);
 }
@@ -53,34 +53,29 @@ void ChatForm::readMessage()
     }
     }
 }
-void ChatForm::updateMessagePosition(Message<msg_type> msg)
+void ChatForm::updateMessagePosition(Message<msg_type> msg, MessageForm* MsgForm)
 {
-    MessagePosition.setX(10);
+    MessagePosition.setX(side_mergin);
     if (msg.header.sender_name == user_name)
     {
-        MessagePosition += QPoint( 230, 60);
+        int msg_form_x_point = ui->frame->width() - MsgForm->width() - 2 * side_mergin;
+        MessagePosition += QPoint( msg_form_x_point, 60);
+        
     }
     else
     {
         MessagePosition += QPoint(0, 60);
     }
+    MsgForm->move(MessagePosition);
 }
 void ChatForm::getNewMessage(Message<msg_type> msg)
 {
-    updateMessagePosition(msg);
-    MessageForm* messageForm = new MessageForm(MessagePosition, ui->frame);
-
+    
+    MessageForm* messageForm = new MessageForm(ui->frame);
+    updateMessagePosition(msg, messageForm);
 
     messageForm->setAutoFillBackground(true);
-    //messageForm->ResizeForm();
-    //messageForm->move(newMessagePos);
-    //make func to set proper position
-    
-
-
-
-
-
+    messageForm->ResizeForm();
     messageForm->writeMessageIntoForm(msg);
 
 
@@ -92,29 +87,22 @@ void ChatForm::writeMessage()
     Message<msg_type> msg;
     msg.header.reciever_name = ConvertFromQString(ui->RemoteClientName->text());
     msg.header.sender_name = user_name;
-    updateMessagePosition(msg);
-    MessageForm* messageForm = new MessageForm(MessagePosition, ui->frame);
+    
+
+    MessageForm* messageForm = new MessageForm(ui->frame);
+    
     messageForm->setAutoFillBackground(true);
     
     user_name = ConvertFromQString(ui->Nickname->text());
     
     
-    //messageForm->ResizeForm();
-   // messageForm->move(newMessagePos);
-    //make func to set proper position
-    
-
-    
-    
-    
-
     QString BodyData = ui->MessageText->text();
     msg.body = ConvertFromQString(BodyData);
     messageForm->writeMessageIntoForm(msg);
-   
+    messageForm->ResizeForm();
+    updateMessagePosition(msg, messageForm);
 
     allMessageForms.push_back(messageForm);
-
     send_msg(msg);
     
 }

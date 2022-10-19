@@ -22,7 +22,7 @@ public:
     void writeMessage();
     void join_server();
 
-    void updateMessagePosition(Message<msg_type> msg);
+    void updateMessagePosition(Message<msg_type> msg, MessageForm* MsgForm);
     void Ping_server(Message<msg_type> msg);
     void Message_all(Message<msg_type> msg);
     void getNewMessage(Message<msg_type> msg);
@@ -38,6 +38,6 @@ private:
     std::vector<MessageForm *> allMessageForms;
     std::array<wchar_t, 256> user_name = {};
     QPoint MessagePosition;
-
+    int side_mergin = 10;
 };
 #endif
