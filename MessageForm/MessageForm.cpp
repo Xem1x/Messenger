@@ -8,16 +8,7 @@ MessageForm::MessageForm(QWidget *parent)
 {
     ui->setupUi(this);
     
-    const QRect rect(QPoint(0, 0), this->geometry().size());
-    QBitmap b(rect.size());
-    b.fill(QColor(Qt::color0));
-    QPainter painter(&b);
-    painter.setRenderHint(QPainter::Antialiasing);
-    painter.setBrush(Qt::color1);
-
-    painter.drawRoundedRect(rect, 5, 5, Qt::AbsoluteSize);
-    painter.end();
-    this->setMask(b);
+    
     
     this->setAutoFillBackground(true);
     this->show();
@@ -73,7 +64,18 @@ QString MessageForm::SplitStrToFitIn(QString str)
     return splitedStr;
 }
 
+void MessageForm::DrawRoundEdges() {
+    const QRect rect(QPoint(0, 0), this->geometry().size());
+    QBitmap b(rect.size());
+    b.fill(QColor(Qt::color0));
+    QPainter painter(&b);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setBrush(Qt::color1);
 
+    painter.drawRoundedRect(rect, 5, 5);
+    painter.end();
+    this->setMask(b);
+}
 
 
 void MessageForm::ResizeForm()
@@ -96,7 +98,7 @@ void MessageForm::ResizeForm()
         else {
             QString splited_to_lines = SplitStrToFitIn(ui->Body->text());
             ui->Body->setText(splited_to_lines);
-            ui->Body->resize(TextWidth(BodyContent), TextHeight(BodyContent));
+            ui->Body->resize(TextWidth(BodyContent), TextHeight(BodyContent)+10);
             int newFormWidth = ui->Body->width() + 20;
             int newFormHeight = ui->Body->height() + 20 + ui->Time->height();
 
@@ -104,7 +106,7 @@ void MessageForm::ResizeForm()
         }
     }
     
-    
+    DrawRoundEdges();
     
     Anchor();
 }

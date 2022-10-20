@@ -55,16 +55,21 @@ void ChatForm::readMessage()
 }
 void ChatForm::updateMessagePosition(Message<msg_type> msg, MessageForm* MsgForm)
 {
+    int points_to_move_down= 10;
+    if(!allMessageForms.empty())
+        points_to_move_down = allMessageForms.back()->height();
+
+        
     MessagePosition.setX(side_mergin);
     if (msg.header.sender_name == user_name)
     {
         int msg_form_x_point = ui->frame->width() - MsgForm->width() - 2 * side_mergin;
-        MessagePosition += QPoint( msg_form_x_point, 60);
+        MessagePosition += QPoint( msg_form_x_point, points_to_move_down+6);
         
     }
     else
     {
-        MessagePosition += QPoint(0, 60);
+        MessagePosition += QPoint(0, points_to_move_down + 6);
     }
     MsgForm->move(MessagePosition);
 }

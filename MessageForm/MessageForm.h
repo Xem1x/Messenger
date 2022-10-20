@@ -24,7 +24,7 @@ public:
     void ResizeForm();
     void Anchor();
     void writeMessageIntoForm(Message<msg_type> msg);
-
+    void DrawRoundEdges();
     
     QString ConvertFromWcharArray(std::array<wchar_t, 256> arr);
 private:
