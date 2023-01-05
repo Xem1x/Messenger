@@ -13,25 +13,25 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5A39EC9D-6285-41F7-9756-90D853EAC4C8}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>6.2.2_msvc2019_64</QtInstall>
+    <QtInstall>6.4.1_msvc2019_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -55,7 +55,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Users\Xem\Documents\project\Messanger\ChatForm;C:\Users\Xem\Documents\project\Messanger\include;C:\asio\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\ChatForm;..\include;..\include\asio\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <IncludePath>C:\Users\Xem\Documents\project\Messanger\ChatForm;C:\Users\Xem\Documents\project\Messanger\include;C:\asio\include;$(IncludePath)</IncludePath>
@@ -99,22 +99,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtUic Include="..\ChatForm\ChatForm.ui" />
-    <QtUic Include="..\MessageForm\MessageForm.ui" />
-    <QtUic Include="MessangerForm.ui" />
-    <ClCompile Include="..\ChatForm\ChatForm.cpp" />
-    <ClCompile Include="..\MessageForm\MessageForm.cpp" />
+    <ClCompile Include="MessengerForm.cpp" />
+    <QtUic Include="..\ChatForm\ChatWidget.ui" />
+    <QtUic Include="..\MessageWidget\MessageWidget.ui" />
+    <ClCompile Include="..\ChatForm\ChatWidget.cpp" />
+    <ClCompile Include="..\MessageWidget\MessageWidget.cpp" />
+    <ClCompile Include="EntryWidget.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="EntryWidget.ui" />
+    <QtUic Include="MessengerForm.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\ChatForm\ChatForm.h" />
+    <QtMoc Include="MessengerForm.h" />
+    <QtMoc Include="..\MessageWidget\MessageWidget.h" />
+    <QtMoc Include="EntryWidget.h" />
+    <QtMoc Include="..\ChatForm\ChatWidget.h" />
     <ClInclude Include="..\include\Connection.h" />
     <ClInclude Include="..\include\Message.h" />
     <ClInclude Include="..\include\Message_types.h" />
     <ClInclude Include="..\include\Messanger_common.h" />
     <ClInclude Include="..\include\Messanger_nmsp.h" />
     <ClInclude Include="..\include\Queue.h" />
-    <QtMoc Include="..\MessageForm\MessageForm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

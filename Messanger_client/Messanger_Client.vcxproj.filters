@@ -9,31 +9,48 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Form Files">
-      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
-      <Extensions>ui</Extensions>
-    </Filter>
-    <Filter Include="MessageForm">
+    <Filter Include="MessageWidget">
       <UniqueIdentifier>{7f5c5eec-18ac-4e68-ad09-f0c8fbdc17ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ChatForm">
+    <Filter Include="EntryWidget">
+      <UniqueIdentifier>{210bf6da-9858-49ec-bf26-f7cb747158db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChatWidget">
       <UniqueIdentifier>{623028f2-936a-45e3-980e-cb9ff9f625d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MessengerForm">
+      <UniqueIdentifier>{e0ee3914-1ef0-46e3-871d-8a8fa5a20ae6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="MessangerForm.ui">
-      <Filter>Form Files</Filter>
+    <QtUic Include="..\ChatForm\ChatWidget.ui">
+      <Filter>ChatWidget</Filter>
+    </QtUic>
+    <QtUic Include="..\MessageWidget\MessageWidget.ui">
+      <Filter>MessageWidget</Filter>
+    </QtUic>
+    <QtUic Include="MessengerForm.ui">
+      <Filter>MessengerForm</Filter>
+    </QtUic>
+    <QtUic Include="EntryWidget.ui">
+      <Filter>EntryWidget</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\MessageForm\MessageForm.cpp">
-      <Filter>MessageForm</Filter>
+    <ClCompile Include="..\ChatForm\ChatWidget.cpp">
+      <Filter>ChatWidget</Filter>
     </ClCompile>
-    <ClCompile Include="..\ChatForm\ChatForm.cpp">
-      <Filter>ChatForm</Filter>
+    <ClCompile Include="EntryWidget.cpp">
+      <Filter>EntryWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MessageWidget\MessageWidget.cpp">
+      <Filter>MessageWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="MessengerForm.cpp">
+      <Filter>MessengerForm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,19 +74,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\MessageForm\MessageForm.h">
-      <Filter>MessageForm</Filter>
+    <QtMoc Include="..\ChatForm\ChatWidget.h">
+      <Filter>ChatWidget</Filter>
     </QtMoc>
-    <QtMoc Include="..\ChatForm\ChatForm.h">
-      <Filter>ChatForm</Filter>
+    <QtMoc Include="EntryWidget.h">
+      <Filter>EntryWidget</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="..\MessageForm\MessageForm.ui">
-      <Filter>MessageForm</Filter>
-    </QtUic>
-    <QtUic Include="..\ChatForm\ChatForm.ui">
-      <Filter>ChatForm</Filter>
-    </QtUic>
+    <QtMoc Include="..\MessageWidget\MessageWidget.h">
+      <Filter>MessageWidget</Filter>
+    </QtMoc>
+    <QtMoc Include="MessengerForm.h">
+      <Filter>MessengerForm</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

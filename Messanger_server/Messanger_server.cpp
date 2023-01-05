@@ -73,7 +73,7 @@ namespace server_detail {
             auto connection_queue = get_connection_queue();
             for (int i = 0; i < get_conn_queue_size(); i++)
             {
-                if (connection_queue[i]->get_user_name() == msg.header.reciever_name)
+                if (connection_queue[i]->get_user_name() == msg.header.sender_name)
                 {
                     return connection_queue[i];
                 }
