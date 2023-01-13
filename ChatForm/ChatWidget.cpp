@@ -15,14 +15,14 @@ ChatWidget::ChatWidget(QWidget *parent)
     this->setAutoFillBackground(true);
 
     
-    
+
     MessagePosition = QPoint(side_mergin,side_mergin);
     QObject::connect(ui->Send, &QPushButton::clicked, this, &ChatWidget::writeMessage);
     QObject::connect(this, &ChatWidget::incomingMessage, this, &ChatWidget::readMessage);
 }
 ChatWidget::~ChatWidget()
 {
-    this->disconnect();
+    this->disconnect_from();
     delete ui;
 }
 

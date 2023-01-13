@@ -17,7 +17,9 @@ MessengerForm::MessengerForm(QWidget* parent)
 }
 
 MessengerForm::~MessengerForm()
-{}
+{
+	delete ui;
+}
 
 void MessengerForm::LogIn()
 {

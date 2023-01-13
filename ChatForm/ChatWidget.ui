@@ -29,19 +29,6 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="RemoteClientName">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>10</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>default1</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="MessageText">
    <property name="geometry">
     <rect>
@@ -147,7 +134,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>50</width>
+     <width>91</width>
      <height>16</height>
     </rect>
    </property>
@@ -156,6 +143,22 @@
    </property>
    <property name="text">
     <string>default</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="RemoteClientName">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>10</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+   <property name="text">
+    <string>Enter Reciever name</string>
    </property>
   </widget>
  </widget>
